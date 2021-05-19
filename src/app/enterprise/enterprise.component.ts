@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EnterpriseService } from './services/enterprise.service';
+import { Enterprise } from './interface/enterprise.interface';
 
 @Component({
   selector: 'app-enterprise',
@@ -6,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class EnterpriseComponent implements OnInit {
+export class EnterpriseComponent {
 
-  constructor() { }
+  // private enterprise: Enterprise = {}  || undefined
+  
 
-  ngOnInit(): void {
-  }
+  
 
+  constructor( public enterpriseService : EnterpriseService) { }
 }

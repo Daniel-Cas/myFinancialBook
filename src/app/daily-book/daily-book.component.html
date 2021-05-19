@@ -1,1 +1,101 @@
-<p>daily-book works!</p>
+<body>
+
+  <app-navbar></app-navbar>
+
+  <div class="d-flex">
+    <div class="row p-3">
+      <div class="col">
+        <div class="bg-dark border-right p-3" id="sidebar">
+          <h3 class="text-light text-center">Formulario</h3>
+          <hr class="text-light" />
+          <div class="list-group list-reset">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Concepto</label>
+                <input type="text" class="form-control" id="inputEmail4" />
+              </div>
+              <div class="col-12">
+                <label for="inputAddress" class="form-label">Codigo</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="inputAddress"
+                  placeholder="1234 Main St"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="inputCity" class="form-label">Saldo</label>
+                <input type="text" class="form-control" id="inputCity" />
+              </div>
+              <div class="col-md-4">
+                <label for="inputCity" class="form-label">Precio COP</label>
+                <input type="number" class="form-control" id="inputCity" />
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-success">Agregar</button>
+
+                <button type="submit" class="btn btn-danger">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3>Libro Diario</h3>
+        <table class="table table-dark table-info">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Codigo</th>
+              <th scope="col">Debito</th>
+              <th scope="col">Credito</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td>example</td>
+              <td>example
+
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+              <td>example</td>
+              <td>example</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>example</td>
+              <td>example</td>
+              <td>example</td>
+              
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>example</td>
+              <td>example</td>
+              <td>example</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</body>
