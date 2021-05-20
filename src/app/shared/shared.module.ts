@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedComponent } from './shared.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -13,7 +14,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   exports: [
     FooterComponent,

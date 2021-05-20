@@ -22,12 +22,15 @@ getEnterprise(){
 
 
   constructor(private loginService: LoginService,
-              private http        : HttpClient) { 
-  this.http.post(`${this._url}enterprise/find`,{
-    id: 1
+              private http        : HttpClient) {
+                console.log(loginService.id_enterprise)
+  this.http.get<any>(`${this._url}enterprise/find`, {
+    params:{
+      id: this.loginService.id_enterprise
+    }
   }).toPromise().then((resp: any)=>{
     console.log("Es acá xd ")
-    //this.enterprise = resp;
+    this.enterprise = resp;
   });
   }
 }

@@ -45,8 +45,6 @@ export class LoginService {
   registerEnterprise( empresa: string, nit: number)  {
 
     let confirmation = false;
-
-    
     this.http.get<[]>(`${ this._url}enterprise/list`)
     .subscribe( (resp) => {
       this.empresas = resp;
@@ -56,7 +54,7 @@ export class LoginService {
           confirmation = false;
           this.router.navigate((['home']));
         }else{
-          confirmation = true;   
+          confirmation = true;
           console.log('Empresa ya existente')
         }
       });
@@ -68,23 +66,15 @@ export class LoginService {
         name: empresa,
         direction: 'Está es la direccion',
         description: 'Esta es la descripcion',
-        phoneNumber:  
-
+        phoneNumber: 'Este es el numero'
       }
-      this.http.post(`${ this._url}enterprise/add`, {
-            nit: nit ,
-            name: empresa,
-            direction: '',
-            description: '',
-            phoneNumber: ''
-          }).toPromise().then((datos: any)=>{
-              //Acá los datos los envio a Enterprise
-            this.id_enterprise = this.empresas.length;
+      this.http.get(`${ this._url  }enterprise/add?${ body }`).toPromise().then((datos: any)=>{
             console.log("No crea nueva empresa")
           })
     }
 
-    
+
+
   }
 
   constructor(private http: HttpClient,
