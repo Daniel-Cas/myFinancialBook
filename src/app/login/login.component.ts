@@ -11,7 +11,7 @@ import { EnterpriseService } from '../enterprise/services/enterprise.service';
 
 export class LoginComponent {
 
-  constructor (   public loginService: LoginService,
+  constructor (   public loginService     : LoginService,
                   public enterpriseService: EnterpriseService) {}
 
 
@@ -34,9 +34,7 @@ export class LoginComponent {
      const user = this.txtUser.nativeElement.value;
      const password = this.txtPassword.nativeElement.value;
 
-     this.loginService.registerEnterprise( user, password);
-
-
+     this.loginService.registerEnterprise( user, Number(password));
    }
 
 }
