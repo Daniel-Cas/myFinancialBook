@@ -38,16 +38,16 @@ const routes: Routes = [
     {
         path: 'ledger',
         component: LedgerComponent
+    },{
+      path: '**',
+      component: LoginComponent
     }
-
-
 ]
 
 
 
 @NgModule({
     imports: [
-        
         RouterModule.forRoot( routes )
     ],
     exports: [

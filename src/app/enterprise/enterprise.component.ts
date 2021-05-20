@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EnterpriseService } from './services/enterprise.service';
-import { Enterprise } from './interface/enterprise.interface';
+import { Enterprise, ListaJournal } from './interface/enterprise.interface';
+import { Welcome } from '../login/interface/login.interface';
 
 @Component({
   selector: 'app-enterprise',
@@ -10,10 +11,44 @@ import { Enterprise } from './interface/enterprise.interface';
 })
 export class EnterpriseComponent {
 
-  // private enterprise: Enterprise = {}  || undefined
-  
+  getId(){
+    return this.enterpriseService.getEnterprise().id
+  }
 
-  
+  getName(){
+    console.log(this.enterpriseService.getEnterprise().name)
+    return this.enterpriseService.getEnterprise().name
+  }
 
-  constructor( public enterpriseService : EnterpriseService) { }
+  getNit(){
+    return this.enterpriseService.getEnterprise().nit
+  }
+
+  getDescription(){
+    return this.enterpriseService.getEnterprise().description;
+  }
+
+  getDirection(){
+    return this.enterpriseService.getEnterprise().direction
+  }
+
+  getTelephone(){
+    return this.enterpriseService.getEnterprise().phoneNumber
+  }
+
+  getListJournal(){
+    return this.enterpriseService.getEnterprise().listaJournal;
+  }
+
+  constructor( public enterpriseService : EnterpriseService
+              ) {
+                let welcomeEnterprise: Welcome  = {
+                id: 0,
+                name: 'a',
+                nit: 0,
+                description: 'a',
+                direction: 'a',
+                phoneNumber: 'a'
+              };
+              welcomeEnterprise = this.enterpriseService.getEnterprise() }
 }

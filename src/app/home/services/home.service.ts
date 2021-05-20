@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginService } from '../../login/services/login.service';
 import { HttpClient } from '@angular/common/http';
-import { Enterprise } from 'src/app/enterprise/interface/enterprise.interface';
-import { Welcome } from 'src/app/login/interface/login.interface';
+import { ListaJournal, Welcome } from 'src/app/login/interface/login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,21 +14,21 @@ export class HomeService {
     nit: 0,
     id: 0
   }
+  id_enterprise: string = '';
+
 
 getEnterprise(){
   return this.enterprise;
 }
 
-
   constructor(private loginService: LoginService,
               private http        : HttpClient) {
-                console.log(loginService.id_enterprise)
+                this.id_enterprise = this.loginService.id_enterprise;
   this.http.get<any>(`${this._url}enterprise/find`, {
     params:{
-      id: this.loginService.id_enterprise
+      id: this.id_enterprise
     }
   }).toPromise().then((resp: any)=>{
-    console.log("Es acá xd ")
     this.enterprise = resp;
   });
   }

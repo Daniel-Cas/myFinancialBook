@@ -1,33 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Enterprise } from '../interface/enterprise.interface';
+import { LoginService } from '../../login/services/login.service';
+import { Welcome } from '../../login/interface/login.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnterpriseService {
 
-  private _url = '//localhost:8080/'
-  private _enterprises: [] = []
-  public nombre = ''
-  public mostrarNit = ''
+  private _url             = '//localhost:8080/'
+   enterprise: Welcome = {
+    name:'',
+    nit: 0,
+    id: 0
+  }
 
-  getEnterprise( user: string, nit: string) {
-    this.http.get<Enterprise[]>(`${this._url}enterprise/list`)
-      .subscribe((resp) => {
-        this._enterprises.forEach(element => {
-          let aux: Enterprise = element;
-          console.log( aux.name )
-          console.log( aux.nit)
-          if (aux.name == user && aux.nit == Number(nit)) {
-             this.nombre = user;
-             this.mostrarNit = nit;
-          }
-        });
+    id_enterprise: string = '';
 
 
-      });
+   getEnterprise(){
+    return this.enterprise;
+  }
+
+
+
+
+
+  constructor( private http: HttpClient,
+               private loginService: LoginService) {
+                console.log(loginService.id_enterprise)
+                this.id_enterprise = this.loginService.id_enterprise;
+  this.http.get<any>(`${this._url}enterprise/find`, {
+    params:{
+      id: this.id_enterprise
     }
-
-  constructor( private http: HttpClient) { }
+  }).toPromise().then((resp: any)=>{
+    this.enterprise = resp;
+    console.log(resp)
+  });
+  }
 }

@@ -27,7 +27,7 @@ export class LoginService {
           console.log( aux.name )
           console.log( aux.nit)
           if (aux.name == user && aux.nit == Number(pass)) {
-            this.id_enterprise = aux.id || undefined
+            this.id_enterprise = aux.id || undefined;
             console.log( this.id_enterprise)
             confirm = true;
             this.router.navigate(['home']);

@@ -26,14 +26,12 @@ export class LoginComponent {
     const password = this.txtPassword.nativeElement.value;
 
      this.loginService.credentialsValidate( user, password);
-     this.enterpriseService.getEnterprise( user, password);
    }
 
 
    register() {
      const user = this.txtUser.nativeElement.value;
      const password = this.txtPassword.nativeElement.value;
-
      this.loginService.registerEnterprise( user, Number(password));
    }
 
