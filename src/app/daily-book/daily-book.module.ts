@@ -14,7 +14,7 @@ import { UpdateComponent } from './update/update.component';
     UpdateComponent
   ],
   exports: [
-    
+
   ]
 })
 export class DailyBookModule { }

@@ -52,7 +52,6 @@ export class LoginService {
         let aux: Welcome = element;
         if (aux.name == empresa && aux.nit == nit) {
           confirmation = false;
-          this.router.navigate((['home']));
         }else{
           confirmation = true;
         }
@@ -60,6 +59,7 @@ export class LoginService {
     });
 
     if(!confirmation){
+      console.log(confirmation)
       let body = {
         nit: nit,
         name: empresa,
@@ -68,13 +68,10 @@ export class LoginService {
         phoneNumber: 'Este es el numero'
       }
       this.http.get(`${ this._url  }enterprise/add?nit=${ body.nit }&name=${ body.name}&direction=${ body.direction}&description=${ body.description}&phoneNumber=${ body.phoneNumber}`).toPromise().then((datos: any)=>{
-            console.log("Empresa Creada")
+            alert('Empresa creada correctamente')
           })
-          this.router.navigate(['home'])
+
         }
-
-
-
   }
 
   constructor(private http: HttpClient,

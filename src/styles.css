@@ -75,11 +75,7 @@
       width: 97%;
     }
 
-    .table-fixed tbody {
-      height: 900px;
-      overflow-y: auto;
-      width: 100%;
-    }
+
 
     .table-fixed thead,
     .table-fixed tbody,
@@ -179,7 +175,14 @@ input, select, textarea {
 
 	html, body {
 		background: #1c1d26;
-	}
+  }
+
+
+#sidebar {
+  height: 200px;
+  min-height: 647px;
+  min-width: 180px;
+}
 
 	body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 		-moz-animation: none !important;

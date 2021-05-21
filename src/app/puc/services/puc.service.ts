@@ -21,7 +21,6 @@ export class PucService {
 
 
   constructor(private http: HttpClient) {
-    console.log('yeah')
     this.http.get<[]>(`${this._url}puc/list`)
      .subscribe((resp) => {
       this.puc = resp;

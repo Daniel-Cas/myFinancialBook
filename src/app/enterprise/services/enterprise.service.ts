@@ -23,10 +23,6 @@ export class EnterpriseService {
     return this.enterprise;
   }
 
-
-
-
-
   constructor(private loginService: LoginService,
     private http: HttpClient) {
                 this.id_enterprise = this.loginService.id_enterprise;
