@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Puc, Naturaleza } from './interfaces/puc.interface';
+import { PucService } from './services/puc.service';
 
 @Component({
   selector: 'app-puc',
@@ -6,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class PucComponent implements OnInit {
+export class PucComponent  {
 
-  constructor() { }
 
-  ngOnInit(): void {
+
+
+  constructor( public pucService: PucService) {
+
   }
+
+
 
 }

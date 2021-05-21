@@ -1,132 +1,42 @@
+<head>
+  <style type="text/css">
+    thead tr th {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: #2f2f2f;
+    }
+
+    .table-responsive {
+        height:200px;
+        overflow:scroll;
+    }
+</style>
+</head>
 
 
 <body>
-    
-<app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 
-<!--<div class="row">
-    <div class="col-md-4 col-sm-6">
-        <div class="card"> -->
-        <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                  <th scope="col">Código</th>
-                  <th scope="col">Concepto</th>
-                  <th scope="col">Naturaleza</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">9</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">10</th>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">11</th>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">12</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">13</th>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">14</th>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">15</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-          </table>
-     <!--    </div>
-     </div>
-</div>
--->
 
+  <table class="table table-dark">
+    <thead class="thead-dark">
+       <tr>
+          <th class="header" scope="col">Numero</th>
+          <th class="header" scope="col">Código</th>
+          <th class="header" scope="col">Concepto</th>
+          <th class="header" scope="col">Naturaleza</th>
+       </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let puc of pucService.puc; let indice = index">
+          <td>{{ indice  }}</td>
+          <td>{{ puc.cod_contable }}</td>
+          <td>{{ puc.concepto }}</td>
+          <td>{{ puc.naturaleza }}</td>
+       </tr>
+
+    </tbody>
+ </table>
 
 </body>

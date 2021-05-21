@@ -55,7 +55,6 @@ export class LoginService {
           this.router.navigate((['home']));
         }else{
           confirmation = true;
-          console.log('Empresa ya existente')
         }
       });
     });
@@ -68,10 +67,11 @@ export class LoginService {
         description: 'Esta es la descripcion',
         phoneNumber: 'Este es el numero'
       }
-      this.http.get(`${ this._url  }enterprise/add?${ body }`).toPromise().then((datos: any)=>{
-            console.log("No crea nueva empresa")
+      this.http.get(`${ this._url  }enterprise/add?nit=${ body.nit }&name=${ body.name}&direction=${ body.direction}&description=${ body.description}&phoneNumber=${ body.phoneNumber}`).toPromise().then((datos: any)=>{
+            console.log("Empresa Creada")
           })
-    }
+          this.router.navigate(['home'])
+        }
 
 
 

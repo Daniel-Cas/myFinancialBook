@@ -70,7 +70,32 @@
         background-color: #e44c65 !important;
     }
 
+    .table-fixed thead,
+    .table-fixed tfoot{
+      width: 97%;
+    }
 
+    .table-fixed tbody {
+      height: 900px;
+      overflow-y: auto;
+      width: 100%;
+    }
+
+    .table-fixed thead,
+    .table-fixed tbody,
+    .table-fixed tfoot,
+    .table-fixed tr,
+    .table-fixed td,
+    .table-fixed th {
+      display: block;
+    }
+
+    .table-fixed tbody td,
+    .table-fixed thead > tr> th,
+    .table-fixed tfoot > tr> td{
+      float: left;
+      border-bottom-width: 0;
+    }
 /*
 	Landed by HTML5 UP
 	html5up.net | @ajlkn

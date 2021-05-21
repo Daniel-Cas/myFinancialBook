@@ -11,45 +11,66 @@
 <hr style="color: white;">
   <div class="bd-example" style="background-color: #2f2f2f;">
 
-  <form class="container">
+  <div class="container">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Nombre de la Empresa</label>
-        <input type="email" class="form-control" id="inputEmail4">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Numero de Identificación Tributaria</label>
-        <input type="password" class="form-control" id="inputPassword4">
+        <input type="text"
+        class="form-control"
+        id="input-group-text"
+        placeholder="Empresa"
+        style="color: white;"
+        #txtEmpresa>
       </div>
     </div>
     <div class="form-group">
       <label for="inputAddress">Direccion de oficinas</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="Calle 123, con Av 1, con Diagonal 1">
+      <input type="text"
+      class="form-control"
+       id="inputAddress"
+       placeholder="Calle 123, con Av 1, con Diagonal 1"
+       style="color: white;"
+       #txtDireccion>
     </div>
     <div class="form-group">
       <label for="inputAddress2">Descripcion acerca del oficio de la empresa</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Zapateria, Control de Valores, Inmoviliaria...">
+      <input type="text"
+       class="form-control"
+       id="inputAddress2"
+       placeholder="Zapateria, Control de Valores, Inmoviliaria..."
+       style="color: white;"
+       #txtDescripcion>
     </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputState">Numero de Telefono</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="555-555">
+        <input type="text"
+        class="form-control"
+        id="inputAddress2"
+        placeholder="555-555"
+        style="color: white;"
+        #txtTelefono>
       </div>
     </div>
 
 
     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group" role="group" aria-label="First group">
-        <button type="submit" class="btn btn-success btn-lg ">Actualizar </button>
+        <button
+         class=" btn-success btn-lg "
+         routerLink="/enterprise" routerLinkActive="router-link-active"
+         (click)="onUpdate()">Actualizar </button>
       </div>
       <div class="input-group">
         <div class="input-group-prepend">
-          <button type="submit" class="btn btn-danger btn-lg btn-block" >  Cancelar  </button>
+          <a type="submit"
+           class="btn btn-danger btn-lg btn-block"
+           (click)="onCancel()">  Cancelar  </a>
         </div>
       </div>
     </div>
 
-  </form>
+  </div>
 
 </div>
 </body>
