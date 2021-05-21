@@ -8,6 +8,12 @@ import { Router } from '@angular/router';
   ]
 })
 export class NavbarComponent {
-  constructor( ) { }
+
+  logout(){
+    this.router.navigate(['/']);
+  }
+
+
+  constructor(private router: Router ) { }
 
 }

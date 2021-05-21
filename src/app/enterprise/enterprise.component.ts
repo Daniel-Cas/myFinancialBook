@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EnterpriseService } from './services/enterprise.service';
 import { Enterprise, ListaJournal } from './interface/enterprise.interface';
 import { Welcome } from '../login/interface/login.interface';
+import { HomeService } from '../home/services/home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enterprise',
@@ -36,12 +38,17 @@ export class EnterpriseComponent {
     return this.enterpriseService.getEnterprise().phoneNumber
   }
 
-  getListJournal(){
+  getListJournal(): ListaJournal[] | undefined{
+    console.log(this.enterpriseService.getEnterprise().listaJournal)
     return this.enterpriseService.getEnterprise().listaJournal;
   }
 
-  constructor( public enterpriseService : EnterpriseService
-              ) {
+  goUpdate(){
+    this.router.navigate(['enterprise/update'])
+  }
+
+  constructor( public enterpriseService : HomeService,
+                private router: Router) {
                 let welcomeEnterprise: Welcome  = {
                 id: 0,
                 name: 'a',
@@ -50,5 +57,7 @@ export class EnterpriseComponent {
                 direction: 'a',
                 phoneNumber: 'a'
               };
-              welcomeEnterprise = this.enterpriseService.getEnterprise() }
+              welcomeEnterprise = this.enterpriseService.getEnterprise()
+              console.log( this.enterpriseService.getEnterprise() )
+             }
 }

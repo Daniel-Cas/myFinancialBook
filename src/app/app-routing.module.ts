@@ -6,6 +6,7 @@ import { EnterpriseComponent } from './enterprise/enterprise.component';
 import { DailyBookComponent } from './daily-book/daily-book.component';
 import { PucComponent } from './puc/puc.component';
 import { LedgerComponent } from './ledger/ledger.component';
+import { UpdateComponent } from "./enterprise/update/update.component";
 
 
 
@@ -26,6 +27,10 @@ const routes: Routes = [
     {
         path: 'enterprise',
         component: EnterpriseComponent
+    },
+    {
+      path:'enterprise/update',
+      component: UpdateComponent
     },
     {
         path: 'dailyBook',

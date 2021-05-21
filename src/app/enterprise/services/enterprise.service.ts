@@ -9,8 +9,8 @@ import { Welcome } from '../../login/interface/login.interface';
 })
 export class EnterpriseService {
 
-  private _url             = '//localhost:8080/'
-   enterprise: Welcome = {
+  private _url: string           = '//localhost:8080/'
+   private enterprise: Welcome = {
     name:'',
     nit: 0,
     id: 0
@@ -27,10 +27,10 @@ export class EnterpriseService {
 
 
 
-  constructor( private http: HttpClient,
-               private loginService: LoginService) {
-                console.log(loginService.id_enterprise)
+  constructor(private loginService: LoginService,
+    private http: HttpClient) {
                 this.id_enterprise = this.loginService.id_enterprise;
+                console.log(loginService.id_enterprise)
   this.http.get<any>(`${this._url}enterprise/find`, {
     params:{
       id: this.id_enterprise
