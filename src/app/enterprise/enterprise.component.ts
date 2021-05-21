@@ -18,7 +18,6 @@ export class EnterpriseComponent {
   }
 
   getName(){
-    console.log(this.enterpriseService.getEnterprise().name)
     return this.enterpriseService.getEnterprise().name
   }
 
@@ -39,7 +38,6 @@ export class EnterpriseComponent {
   }
 
   getListJournal(): ListaJournal[] | undefined{
-    console.log(this.enterpriseService.getEnterprise().listaJournal)
     return this.enterpriseService.getEnterprise().listaJournal;
   }
 
@@ -58,6 +56,5 @@ export class EnterpriseComponent {
                 phoneNumber: 'a'
               };
               welcomeEnterprise = this.enterpriseService.getEnterprise()
-              console.log( this.enterpriseService.getEnterprise() )
              }
 }

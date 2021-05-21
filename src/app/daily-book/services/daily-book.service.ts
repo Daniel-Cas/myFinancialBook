@@ -22,7 +22,6 @@ export class DailyBookService {
 
   constructor(private http: HttpClient, private loginService: LoginService) {
     this.id_enterprise = this.loginService.id_enterprise;
-    console.log(loginService.id_enterprise);
     this.http
       .get<any>(`${this._url}enterprise/find`, {
         params: {

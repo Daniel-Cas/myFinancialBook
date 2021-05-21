@@ -40,24 +40,40 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Concepto</label>
-                <input type="text" class="form-control" id="inputEmail4" />
+                <input type="text"
+                class="form-control"
+                 id="inputEmail4"
+                 placeholder="Bancos"
+                  style="color: white;"/>
               </div>
-              <div class="col-12">
+              <div class="col-md-6">
                 <label for="inputAddress" class="form-label">Codigo</label>
                 <input
                   type="number"
                   class="form-control"
                   id="inputAddress"
-                  placeholder="1234 Main St"
+                  placeholder="0"
+                  style="color:  #2f2f2f;"
+                />
+              </div>
+              <hr>
+              <div class="col-md-6">
+                <label for="inputAddress" class="form-label">Descripcion</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputAddress"
+                  placeholder="Recibi de X, Tanto Y "
+                  style="color: white;"
                 />
               </div>
               <div class="col-md-6">
                 <label for="inputCity" class="form-label">Saldo</label>
-                <input type="text" class="form-control" id="inputCity" />
+                <input type="text" class="form-control" id="inputCity"style="color: white;" placeholder="Creditio o Debito"/>
               </div>
               <div class="col-md-4">
                 <label for="inputCity" class="form-label">Precio COP</label>
-                <input type="number" class="form-control" id="inputCity" />
+                <input type="float" class="form-control" id="inputCity" style="color: #2f2f2f;" />
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-success">Agregar</button>
@@ -90,10 +106,10 @@
             <tr *ngFor="let journal of getListJournal(); let indice = index">
               <td>{{ journal.id }}</td>
               <td>{{ journal.code }}</td>
-              <td>{{ journal.debit }}</td>
-              <td>{{ journal.credit}}</td>
+              <td>{{ journal.debit | number}}</td>
+              <td>{{ journal.credit | number}}</td>
               <td>{{ journal.description  }}</td>
-              <td> {{ journal.date }}</td>
+              <td> {{ journal.date | date  }}</td>
             </tr>
           </tbody>
         </table>

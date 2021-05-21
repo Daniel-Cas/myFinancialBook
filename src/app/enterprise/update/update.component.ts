@@ -46,12 +46,9 @@ export class UpdateComponent {
            description: description,
            phoneNumber: telephone
       }
-      console.log(enterprise,description,direction,telephone);
       this.http.get<any>(`${this._url}enterprise/update?id=${ body.id }&direction=${ body.direction }&name=${ body.name }&description=${ body.description }&phoneNumber=${ body.phoneNumber }`)
       .toPromise().then( (resp) => {
-        if(resp == ''){
-          console.log(':D')
-        }
+        alert('Empresa Actualizada')
       })
 
 
@@ -74,7 +71,7 @@ export class UpdateComponent {
     this._enterprise = this.enterpriseService.getEnterprise()
 
 
-    console.log( this.enterpriseService.getEnterprise() )
+
    }
 
 

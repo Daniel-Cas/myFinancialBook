@@ -12,7 +12,6 @@ import { ListaJournal } from '../enterprise/interface/enterprise.interface';
 export class DailyBookComponent  {
 
   getListJournal(): ListaJournal[] | undefined {
-    console.log(this.dailyBookService.getEnterprise().listaJournal)
     return this.dailyBookService.getEnterprise().listaJournal;
   }
 
@@ -27,7 +26,6 @@ export class DailyBookComponent  {
       phoneNumber: 'a'
     };
     welcomeEnterprise = this.dailyBookService.getEnterprise()
-    console.log( this.dailyBookService.getEnterprise() )
   }
 
 

@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UpdateComponent } from './update/update.component';
+import { DailyBookComponent } from './daily-book.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-
-    UpdateComponent
+    DailyBookComponent
   ],
   imports: [
     CommonModule,
-    UpdateComponent
+    SharedModule
   ],
   exports: [
 
