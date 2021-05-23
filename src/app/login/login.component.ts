@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { LoginService } from './services/login.service';
 import { EnterpriseService } from '../enterprise/services/enterprise.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,6 @@ export class LoginComponent {
   findUser() {
     const user = this.txtUser.nativeElement.value;
     const password = this.txtPassword.nativeElement.value;
-
     this.loginService.credentialsValidate(user, password);
   }
 
@@ -26,7 +26,7 @@ export class LoginComponent {
     const user = this.txtUser.nativeElement.value;
     const password = this.txtPassword.nativeElement.value;
     if (user.trim() == '' && Number(password.trim()) == 0) {
-      alert('Campos vacios');
+      Swal.fire('Campos vacíos','','error')
     } else {
       this.loginService.registerEnterprise(user, Number(password));
     }

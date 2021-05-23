@@ -1,4 +1,3 @@
-
 <head>
   <style type="text/css">
     thead tr th {
@@ -24,10 +23,7 @@
   </style>
 </head>
 
-
-
 <body>
-
   <app-navbar></app-navbar>
 
   <div class="d-flex">
@@ -40,11 +36,14 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Concepto</label>
-                <input type="text"
-                class="form-control"
-                 id="inputEmail4"
-                 placeholder="Bancos"
-                  style="color: white;"/>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputEmail4"
+                  placeholder="Bancos"
+                  style="color: white"
+                  #txtConcepto
+                />
               </div>
               <div class="col-md-6">
                 <label for="inputAddress" class="form-label">Codigo</label>
@@ -53,10 +52,11 @@
                   class="form-control"
                   id="inputAddress"
                   placeholder="0"
-                  style="color:  #2f2f2f;"
+                  style="color: #2f2f2f"
+                  #txtCodigo
                 />
               </div>
-              <hr>
+              <hr />
               <div class="col-md-6">
                 <label for="inputAddress" class="form-label">Descripcion</label>
                 <input
@@ -64,21 +64,97 @@
                   class="form-control"
                   id="inputAddress"
                   placeholder="Recibi de X, Tanto Y "
-                  style="color: white;"
+                  style="color: white"
+                  #txtDescripcion
                 />
               </div>
               <div class="col-md-6">
                 <label for="inputCity" class="form-label">Saldo</label>
-                <input type="text" class="form-control" id="inputCity"style="color: white;" placeholder="Creditio o Debito"/>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputCity"
+                  style="color: white"
+                  placeholder="Creditio o Debito"
+                  #txtSaldo
+                />
               </div>
               <div class="col-md-4">
                 <label for="inputCity" class="form-label">Precio COP</label>
-                <input type="float" class="form-control" id="inputCity" style="color: #2f2f2f;" />
+                <input
+                  type="float"
+                  class="form-control"
+                  id="inputCity"
+                  style="color: #2f2f2f"
+                  #txtPrecio
+                />
               </div>
-              <div class="col-12">
-                <button type="submit" class="btn btn-success">Agregar</button>
+              <div class="col-md-12">
+                <button
+                  type="submit"
+                  class="btn btn-success bnt-lg float-right"
+                  style="width: 180px"
+                  (click)="addBook()"
+                >
+                  Agregar
+                </button>
+              </div>
+              <hr style="color: white;" />
+              <h4>Opciones</h4>
+              <div class="col-md-6">
+              <input
+                  type="text"
+                  class="form-control"
+                  id="inputCity"
+                  style="color: white; size: 120px;"
+                  placeholder="Creditio o Debito"
+                  #txtSaldoUpdate
+                />
+              </div>
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputCity"
+                  style="color: white; size: 120px;"
+                  placeholder="Precio en COP"
+                  #txtPrecioUpdate
+                />
+              </div>
+              <div class="container">
+                <div class="row justifity-content-start">
+                  <div class="col-4">
+                    <label for="inputAddress" class="form-label">ID</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="inputAddress"
+                      placeholder="0"
+                      style="color: #2f2f2f"
+                      #txtCodigoManipulable
+                    />
+                  </div>
 
-                <button type="submit" class="btn btn-danger">Cancelar</button>
+                  <div class="col align-self-end">
+                      <button
+                        type="submit"
+                        class="btn btn-warning btn-lg"
+                        style="width: 120px"
+                        (click)="updateBook()">
+                        Actualizar
+                      </button>
+
+                      <button
+                        type="submit"
+                        class="btn btn-danger btn-lg float-right"
+                        style="width: 100px"
+                        (click)="deleteBook()"
+                      >
+                        Eliminar
+                      </button>
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
@@ -86,35 +162,39 @@
       </div>
     </div>
 
+    <!-- Tabla terminada -->
     <div class="container">
-    <div class="row aling-center">
-      <div class="col  table-wrapper-scroll-y my-custom-scrollbar" style="max-height: 652px !important;">
-        <h3 class="text-center" style="color: #2f2f2f;">Libro Diario</h3>
-        <hr>
-        <table class="table table-dark table-info">
-          <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Codigo</th>
-              <th scope="col">Debito</th>
-              <th scope="col">Credito</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let journal of getListJournal(); let indice = index">
-              <td>{{ journal.id }}</td>
-              <td>{{ journal.code }}</td>
-              <td>{{ journal.debit | number}}</td>
-              <td>{{ journal.credit | number}}</td>
-              <td>{{ journal.description  }}</td>
-              <td> {{ journal.date | date  }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row aling-center">
+        <div
+          class="col table-wrapper-scroll-y my-custom-scrollbar"
+          style="max-height: 652px !important"
+        >
+          <h3 class="text-center" style="color: #2f2f2f">Libro Diario</h3>
+          <hr />
+          <table class="table table-dark table-info">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Debito</th>
+                <th scope="col">Credito</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let journal of getListJournal(); let indice = index">
+                <td>{{ journal.id }}</td>
+                <td>{{ journal.code }}</td>
+                <td>{{ journal.debit | number }}</td>
+                <td>{{ journal.credit | number }}</td>
+                <td>{{ journal.description }}</td>
+                <td>{{ journal.date | date }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </body>

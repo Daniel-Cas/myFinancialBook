@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Welcome } from '../../login/interface/login.interface';
 import { HomeService } from '../../home/services/home.service';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update',
@@ -48,7 +49,11 @@ export class UpdateComponent {
       }
       this.http.get<any>(`${this._url}enterprise/update?id=${ body.id }&direction=${ body.direction }&name=${ body.name }&description=${ body.description }&phoneNumber=${ body.phoneNumber }`)
       .toPromise().then( (resp) => {
-        alert('Empresa Actualizada')
+        Swal.fire({
+          icon: 'success',
+          title: 'Empresa Actualizada correctamente',
+          text: 'Something went wrong!',
+        })
       })
 
 

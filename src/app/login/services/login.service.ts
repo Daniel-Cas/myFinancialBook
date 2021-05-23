@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Welcome } from '../interface/login.interface';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +23,14 @@ export class LoginService {
         console.log(aux.name);
         console.log(aux.nit);
         if (aux.name == user && aux.nit == Number(pass)) {
+          Swal.fire('Credenciales confirmadas','','success')
           this.id_enterprise = aux.id || undefined;
           console.log(this.id_enterprise);
           confirm = true;
           this.router.navigate(['home']);
         }
         if (!confirm) {
-          console.log('Ćredenciales incorrectas');
+          Swal.fire('Credenciales incorrectas','','error')
         }
       });
     });

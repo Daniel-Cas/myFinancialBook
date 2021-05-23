@@ -8,7 +8,7 @@ import { LoginService } from '../../login/services/login.service';
 })
 export class DailyBookService {
   private _url: string = '//localhost:8080/';
-  private enterprise: Welcome = {
+  public enterprise: Welcome = {
     name: '',
     nit: 0,
     id: 0,
@@ -20,7 +20,10 @@ export class DailyBookService {
     return this.enterprise;
   }
 
-  constructor(private http: HttpClient, private loginService: LoginService) {
+
+
+  constructor(private http: HttpClient,
+              private loginService: LoginService) {
     this.id_enterprise = this.loginService.id_enterprise;
     this.http
       .get<any>(`${this._url}enterprise/find`, {
@@ -31,6 +34,7 @@ export class DailyBookService {
       .toPromise()
       .then((resp: any) => {
         this.enterprise = resp;
+        console.log(this.enterprise)
       });
   }
 }
