@@ -19,13 +19,6 @@ export class LedgerService {
 
   journalLedger: [] = [];
 
-
-httpGetLedger(){
-
-}
-
-
-
   constructor( private loginService: LoginService,
                private http: HttpClient) {
                  this.id_enterprise = this.loginService.id_enterprise;
