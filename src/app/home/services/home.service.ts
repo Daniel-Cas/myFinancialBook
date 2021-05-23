@@ -52,7 +52,7 @@ export class HomeService {
         })
         .toPromise()
         .then((resp) => {
-          Swal.fire('Agregado Satisfactoriamente', '', 'success')
+
         });
     } else if (
       saldo.trim().toLowerCase() == 'debito' ||
@@ -70,7 +70,7 @@ export class HomeService {
         })
         .toPromise()
         .then((resp) => {
-          console.log('Libro Agregado');
+          Swal.fire('Agregado Satisfactoriamente', '', 'success');
         });
     } else {
       console.log('Saldo no válido');

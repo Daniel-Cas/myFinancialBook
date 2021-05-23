@@ -4,141 +4,24 @@
 
   <div class="container">
   <div class="row justify-content-center">
-    <div class="col-auto">
-       
+    <div class="col-lg">
       <div class="card">
-        <table class="table table-dark table-striped">
+        <table class="table table-wrapper-scroll-y table-dark table-striped">
           <thead>
             <tr>
               <th scope="col">Código</th>
               <th scope="col">Concepto</th>
               <th scope="col">Naturaleza</th>
+              <th scope="col">Total</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Concepto</th>
-              <th scope="col">Naturaleza</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Concepto</th>
-              <th scope="col">Naturaleza</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Concepto</th>
-              <th scope="col">Naturaleza</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Concepto</th>
-              <th scope="col">Naturaleza</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
+            <tr *ngFor="let ledger of getLedger()">
+              <th scope="row"> <strong>{{ ledger.code }}</strong></th>
+              <td>{{ ledger.concept }}</td>
+              <td *ngIf="ledger.balance == true"> Débito</td>
+              <td *ngIf="ledger.balance == false"> Crédito</td>
+              <td>{{ ledger.total | number}}</td>
             </tr>
           </tbody>
         </table>

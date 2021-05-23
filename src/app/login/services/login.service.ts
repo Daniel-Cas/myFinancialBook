@@ -20,8 +20,6 @@ export class LoginService {
       let confirm = false;
       this._enterprises.forEach((element) => {
         let aux: Welcome = element;
-        console.log(aux.name);
-        console.log(aux.nit);
         if (aux.name == user && aux.nit == Number(pass)) {
           Swal.fire('Credenciales confirmadas','','success')
           this.id_enterprise = aux.id || undefined;

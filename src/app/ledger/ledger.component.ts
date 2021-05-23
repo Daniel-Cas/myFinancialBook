@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { LedgerService } from './services/ledger.service';
+import { Ledger } from './interfaces/ledger.interfaces';
 
 @Component({
   selector: 'app-ledger',
@@ -6,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class LedgerComponent implements OnInit {
+export class LedgerComponent {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+
+
+getLedger(): [] | any {
+  return this.ledgerService.journalLedger
+}
+
+  constructor( private ledgerService: LedgerService ,
+              ) { }
+
 
 }
