@@ -69,11 +69,11 @@
                 />
               </div>
               <div class="col-md-6">
-                <label for="inputCity" class="form-label">Saldo</label>
+                <label for="saldo" class="form-label">Saldo</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="inputCity"
+                  id="saldo"
                   style="color: white"
                   placeholder="Creditio o Debito"
                   #txtSaldo
@@ -105,7 +105,6 @@
               <input
                   type="text"
                   class="form-control"
-                  id="inputCity"
                   style="color: white; size: 120px;"
                   placeholder="Creditio o Debito"
                   #txtSaldoUpdate
@@ -115,7 +114,6 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="inputCity"
                   style="color: white; size: 120px;"
                   placeholder="Precio en COP"
                   #txtPrecioUpdate
@@ -182,19 +180,30 @@
                 <th scope="col">Date</th>
               </tr>
             </thead>
-            <tbody>
-              <tr *ngFor="let journal of getListJournal(); let indice = index">
+            <tbody *ngIf="Enterprise;">
+              <tr *ngFor="let journal of Enterprise.listaJournal; let indice = index">
                 <td>{{ journal.id }}</td>
                 <td>{{ journal.code }}</td>
                 <td>{{ journal.debit | number }}</td>
                 <td>{{ journal.credit | number }}</td>
                 <td>{{ journal.description }}</td>
                 <td>{{ journal.date | date }}</td>
+
               </tr>
             </tbody>
           </table>
+          <button class="btn btn-danger"
+          (click)="onDoubleCouting()"> Partidas Dobles </button>
+          <div class="container"
+          *ngFor="let value of doblecouting; let indice = index; ">
+          <div class="alert alert-success"
+          *ngIf="value" > Si existe la partida doble {{ listDate[indice] }}</div>
+          <div class=" alert alert-danger"
+          *ngIf="!value"> No existe la aprtida doble {{listDate[indice]}}</div>
+
+        </div>
+      </div>
         </div>
       </div>
     </div>
-  </div>
 </body>

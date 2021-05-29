@@ -4,6 +4,7 @@ import { Enterprise, ListaJournal } from './interface/enterprise.interface';
 import { Welcome } from '../login/interface/login.interface';
 import { HomeService } from '../home/services/home.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../login/services/login.service';
 
 @Component({
   selector: 'app-enterprise',
@@ -13,48 +14,41 @@ import { Router } from '@angular/router';
 })
 export class EnterpriseComponent {
 
+  Enterprise!: Welcome;
+
   getId(){
-    return this.enterpriseService.getEnterprise().id
+    return this.Enterprise.id
   }
 
   getName(){
-    return this.enterpriseService.getEnterprise().name
+    return this.Enterprise.name
   }
 
   getNit(){
-    return this.enterpriseService.getEnterprise().nit
+    return this.Enterprise.nit
   }
 
   getDescription(){
-    return this.enterpriseService.getEnterprise().description;
+    return this.Enterprise.description;
   }
 
   getDirection(){
-    return this.enterpriseService.getEnterprise().direction
+    return this.Enterprise.direction
   }
 
   getTelephone(){
-    return this.enterpriseService.getEnterprise().phoneNumber
-  }
-
-  getListJournal(): ListaJournal[] | undefined{
-    return this.enterpriseService.getEnterprise().listaJournal;
+    return this.Enterprise.phoneNumber
   }
 
   goUpdate(){
     this.router.navigate(['enterprise/update'])
   }
 
-  constructor( public enterpriseService : HomeService,
+  constructor( public loginService: LoginService,
                 private router: Router) {
-                let welcomeEnterprise: Welcome  = {
-                id: 0,
-                name: 'a',
-                nit: 0,
-                description: 'a',
-                direction: 'a',
-                phoneNumber: 'a'
-              };
-              welcomeEnterprise = this.enterpriseService.getEnterprise()
+                  this.loginService.findEnterprise()
+                  .subscribe( resp =>{
+                    this.Enterprise = resp;
+                  })
              }
 }

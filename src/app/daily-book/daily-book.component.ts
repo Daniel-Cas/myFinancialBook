@@ -4,6 +4,9 @@ import { HomeService } from '../home/services/home.service';
 import { ListaJournal } from '../enterprise/interface/enterprise.interface';
 import Swal from 'sweetalert2';
 import { DailyBookService } from './services/daily-book.service';
+import { LoginService } from '../login/services/login.service';
+import { listenerCount } from 'events';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-daily-book',
@@ -12,14 +15,16 @@ import { DailyBookService } from './services/daily-book.service';
 })
 export class DailyBookComponent {
 
+
+  Enterprise!: Welcome;
+  doblecouting: boolean[] = [];
+
+
   @ViewChild('txtConcepto') txtConcepto!: ElementRef<HTMLInputElement>;
   @ViewChild('txtCodigo') txtCodigo!: ElementRef<HTMLInputElement>;
   @ViewChild('txtDescripcion') txtDescripcion!: ElementRef<HTMLInputElement>;
   @ViewChild('txtSaldo') txtSaldo!: ElementRef<HTMLInputElement>;
   @ViewChild('txtPrecio') txtPrecio!: ElementRef<HTMLInputElement>;
-
-
-
 
   addBook() {
     const codigo = this.txtCodigo.nativeElement.value;
@@ -27,30 +32,40 @@ export class DailyBookComponent {
     const descripcion = this.txtDescripcion.nativeElement.value;
     const saldo = this.txtSaldo.nativeElement.value;
     const precio = this.txtPrecio.nativeElement.value;
-    if (
-      codigo != '' &&
+    if (codigo != '' &&
       concepto != '' &&
       descripcion != '' &&
       saldo != '' &&
-      precio != ''
-    ) {
-      this.dailyBookService.postBook(
-        codigo,
-        concepto,
-        descripcion,
-        saldo,
-        precio
-      );
+      precio != '') {
+      if (saldo.trim().toLowerCase() == 'credito' || saldo.trim().toLowerCase() == 'crédito' ) {
+
+        this.loginService.addDailyBookCredit(codigo,precio,descripcion, this.Enterprise.id )
+        .subscribe( resp => console.log(resp));
+        this.refreshEnterprise()
+
+      } else if ( saldo.trim().toLowerCase() == 'debito' || saldo.trim().toLowerCase() == 'débito' ) {
+
+        this.loginService.addDailyBookDebit(codigo,precio,descripcion, this.Enterprise.id )
+        .subscribe( resp => console.log(resp))
+
+      } else {
+
+        Swal.fire('Saldo no válido',' El campo saldo debe ser credito o debito','warning')
+
+      }
+
       this.txtCodigo.nativeElement.value = '';
       this.txtConcepto.nativeElement.value = '';
       this.txtDescripcion.nativeElement.value = '';
       this.txtSaldo.nativeElement.value = '';
       this.txtPrecio.nativeElement.value = '';
+
     } else {
-      Swal.fire('Fallo en agregar','Debe llenar todos los campos para agregar', 'warning')
+      Swal.fire('Fallo en agregar',
+                'Debe llenar todos los campos para agregar',
+                'warning');
     }
   }
-
 
   onCancel() {
     Swal.fire('Proceso Cancelado', '', 'error');
@@ -61,69 +76,112 @@ export class DailyBookComponent {
     this.txtPrecio.nativeElement.value = '';
   }
 
+  @ViewChild('txtCodigoManipulable')
+  txtCodigoManipulable!: ElementRef<HTMLInputElement>;
+  @ViewChild('txtSaldoUpdate') txtSaldoUpdate!: ElementRef<HTMLInputElement>;
+  @ViewChild('txtPrecioUpdate') txtPrecioUpdate!: ElementRef<HTMLInputElement>;
 
-
-  @ViewChild('txtCodigoManipulable') txtCodigoManipulable!:ElementRef<HTMLInputElement>;
-  @ViewChild('txtSaldoUpdate') txtSaldoUpdate!:ElementRef<HTMLInputElement>;
-  @ViewChild('txtPrecioUpdate') txtPrecioUpdate!:ElementRef<HTMLInputElement>;
-
-  updateBook(){
+  updateBook() {
     const id = this.txtCodigoManipulable.nativeElement.value.trim();
     const saldo = this.txtSaldoUpdate.nativeElement.value.trim();
     const precio = this.txtPrecioUpdate.nativeElement.value.trim();
-    if( id != '' && saldo != '' && precio != ''){
-      if(saldo=='credito'){
-        this.dailyBookService.httpUpdateBook(precio,'0.0',id)
-      }else if(saldo=='debito'){
-        this.dailyBookService.httpUpdateBook('0.0',precio,id)
-      }else{
-        Swal.fire('Saldo Incorrecto','','error')
+    if (id != '' && saldo != '' && precio != '') {
+      if (saldo == 'credito') {
+        this.loginService.updateDailyBookCredit( precio, id )
+        .subscribe( resp => {
+          if(resp){
+            Swal.fire('Actualizado correctamente','','success')
+          }else{
+            Swal.fire('Algo ha salido mal.','','error')
+          }
+        });
+      } else if (saldo == 'debito') {
+        this.loginService.updateDailyBookDebit( precio, id )
+        .subscribe( resp => {
+          if(resp){
+            Swal.fire('Actualizado correctamente','','success')
+          }else{
+            Swal.fire('Algo ha salido mal.','','error')
+          }
+        });
+      } else {
+        Swal.fire('Saldo Incorrecto', '', 'error');
       }
-    }else{
-      Swal.fire('Debes llenar los campos','','warning')
+    } else {
+      Swal.fire('Debes llenar los campos', '', 'warning');
     }
   }
 
-  deleteBook(){
+  deleteBook() {
     const id = this.txtCodigoManipulable.nativeElement.value.trim();
 
-    if(id != ''){
+    if (id != '') {
       Swal.fire({
         title: '¿Quieres eliminar este libro diario?',
         showDenyButton: true,
-        showCancelButton: true,
         confirmButtonText: `SI`,
         denyButtonText: `NO`,
       }).then((result) => {
         //Confirmación de las preguntas
         if (result.isConfirmed) {
-          this.dailyBookService.httpDelete(id);
+          this.loginService.deleteDailyBook(id)
+          .subscribe( resp => {
+            if(resp){
+              Swal.fire('Eliminacion completada','','success');
+            }else{
+              Swal.fire('Algo salió mal','','error');
+            }
+          });
         } else if (result.isDenied) {
-          Swal.fire('Proceso cancelado', '', 'info')
+          Swal.fire('Proceso cancelado', '', 'info');
         }
-      })
-    }else{
-      Swal.fire('Campo ID vacío','Debes ingresar el ID del libro a eliminar','warning')
+      });
+    } else {
+      Swal.fire(
+        'Campo ID vacío',
+        'Debes ingresar el ID del libro a eliminar',
+        'warning'
+      );
     }
   }
 
 
-  getListJournal(): ListaJournal[] | undefined {
-    return this.dailyBookService.getEnterprise().listaJournal;
+  //Actualiza la Empresa para que el saldo de la tabla se actualice,
+  // por el momento no fuinciona del todo bien xd
+  refreshEnterprise(){
+
   }
 
-  constructor(
-    private dailyBookService: HomeService,
-    private daily: DailyBookService
-  ) {
-    let welcomeEnterprise: Welcome = {
-      id: 0,
-      name: 'a',
-      nit: 0,
-      description: 'a',
-      direction: 'a',
-      phoneNumber: 'a',
-    };
-    welcomeEnterprise = this.dailyBookService.getEnterprise();
+
+  listDate: Date[] =[];
+
+  //DoubleCouting
+  onDoubleCouting( ){
+    this.Enterprise.listaJournal.forEach( journal =>{
+      this.listDate.push( journal.date );
+    })
+
+
+    for (let i = this.Enterprise.listaJournal.length -1 ;  i>=0; i--){
+        if( this.listDate.indexOf(this.listDate[i]) !== i){
+          this.listDate.splice(i,1);
+        }
+    }
+
+    this.listDate.forEach( date =>{
+      let dates: string = date.toString();
+      this.loginService.doubleCounting( this.Enterprise.id, dates  )
+      .subscribe( resp => {
+        this.doblecouting.push( resp );
+      })
+    })
+  }
+
+
+
+  constructor(private loginService: LoginService) {
+    this.loginService.findEnterprise().subscribe((resp) => {
+      this.Enterprise = resp;
+    });
   }
 }

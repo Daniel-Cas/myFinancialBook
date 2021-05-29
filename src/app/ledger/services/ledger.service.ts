@@ -21,7 +21,7 @@ export class LedgerService {
 
   constructor( private loginService: LoginService,
                private http: HttpClient) {
-                 this.id_enterprise = this.loginService.id_enterprise;
+                // this.id_enterprise = this.loginService.id_enterprise;
                  this.http.get<any>(`${this._url}Mayor/list`,{
                    params: {
                      id_enterprise: this.id_enterprise

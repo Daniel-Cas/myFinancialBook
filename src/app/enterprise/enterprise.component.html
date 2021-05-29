@@ -6,11 +6,11 @@
 <main class="container">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
       <div class="col-md-6 px-0">
-        <h1 class="display-4 fst-italic"> {{ getName()}}
+        <h1 class="display-4 fst-italic" *ngIf="Enterprise"> {{ getName()}}
         </h1>
-        <p class="lead my-3"> NIT:  {{ getNit()}}
+        <p class="lead my-3" *ngIf="Enterprise"> NIT:  {{ getNit()}}
         </p>
-        <p>ID: {{ getId() }}
+        <p *ngIf="Enterprise" >ID: {{ getId() }}
         </p>
 
         <button type="button"
@@ -22,14 +22,14 @@
     <div class="row mb-2">
       <div class="col-md-6" >
         <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="max-height: 250px;">
-          <div class="col p-4 d-flex flex-column position-static overflow-auto">
-            <strong class="d-inline-block mb-2 text-primary"> Portafolio </strong>
+          <div class="col p-4 d-flex flex-column position-static overflow-auto" *ngIf="Enterprise">
+            <strong class="d-inline-block mb-2 text-primary" > Portafolio </strong>
             <div class="mb-1 text-muted"
-            *ngFor="let journal of getListJournal()">ID: {{ journal.id }} - Fecha {{ journal.date }}</div>
+            *ngFor="let journal of  Enterprise.listaJournal">ID: {{ journal.id }} - Fecha {{ journal.date }}</div>
             <p class="card-text mb-auto"></p>
           </div>
           <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Ktronix</text></svg>
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
 
           </div>
         </div>
@@ -38,12 +38,12 @@
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-success">Informacion</strong>
-            <h5 class="mb-0" style="color: #2f2f2f;">Contacto: {{ getTelephone() }} </h5>
-            <div class="mb-1 text-muted">Mayo 16</div>
-            <p class="mb-auto">{{ getDescription()}} </p>
+            <h5 class="mb-0" style="color: #2f2f2f;" *ngIf="Enterprise">Contacto: {{ getTelephone() }} </h5>
+            <div class="mb-1 text-muted"></div>
+            <p class="mb-auto" *ngIf="Enterprise">{{ getDescription()}} </p>
           </div>
           <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">ktronix</text></svg>
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
 
           </div>
         </div>

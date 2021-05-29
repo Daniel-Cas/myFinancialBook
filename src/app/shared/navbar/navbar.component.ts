@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LoginService } from '../../login/services/login.service';
+import { Welcome } from '../../login/interface/login.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class NavbarComponent {
 
+  Enterprise!: Welcome;
+
   logout(){
     Swal.fire({
       title: '¿Seguro que quiere terminar la Sesión?',
@@ -18,6 +22,7 @@ export class NavbarComponent {
       denyButtonText: `No`,
     }).then((result) => {
       if (result.isConfirmed) {
+        this.loginService.setEnterprise( this.Enterprise );
         this.router.navigate(['/']);
       } else if (result.isDenied) {
       }
@@ -25,6 +30,7 @@ export class NavbarComponent {
   }
 
 
-  constructor(private router: Router ) { }
+  constructor(private router: Router,
+              private loginService: LoginService ) { }
 
 }

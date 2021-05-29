@@ -5,7 +5,7 @@
     <div class="content">
         <header>
             <h2>My Financial Book</h2>
-            <p>Bienvenido <strong> {{ getEmpresa() }}</strong> a My Financial Book dirección: <strong> {{ getDirection() }}  </strong><br/></p>
+            <p *ngIf="enterprise;">Bienvenido a My Financial Book:  <strong> {{ enterprise.name }}</strong> <br/></p>
         </header>
         <span class="image"><img src="assets/logo.png" alt="" /></span>
     </div>

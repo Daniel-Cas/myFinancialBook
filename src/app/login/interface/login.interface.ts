@@ -1,14 +1,14 @@
 
 
 export interface Welcome {
-    id?:           number;
+    id:           number;
     nit:          number;
     name:         string;
     description?:  string;
     direction?:    string;
     phoneNumber?:  string;
-    listaJournal?: ListaJournal[];
-    
+    listaJournal: ListaJournal[];
+
 }
 
 export interface EmpresaPost {
@@ -25,5 +25,13 @@ export interface ListaJournal {
     debit?:       number;
     credit?:      number;
     description?: string;
-    date?:        Date;
+    date:        Date;
 }
+
+export interface Ledger {
+  code:    number;
+  concept: string;
+  total:   number;
+  balance: boolean;
+}
+
