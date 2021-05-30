@@ -4,7 +4,6 @@ import { EnterpriseService } from '../enterprise/services/enterprise.service';
 import Swal from 'sweetalert2';
 import { Welcome } from './interface/login.interface';
 import { Router } from '@angular/router';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-login',

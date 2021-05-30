@@ -2,7 +2,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ledger, ListaJournal, Welcome } from '../interface/login.interface';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { Observable, ObservedValueOf } from 'rxjs';
 
 @Injectable({

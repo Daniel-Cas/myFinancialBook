@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Puc, Naturaleza } from './interfaces/puc.interface';
+import { Component } from '@angular/core';
 import { PucService } from './services/puc.service';
 
 @Component({

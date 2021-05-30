@@ -28,7 +28,7 @@
 
   <div class="d-flex">
     <div class="row p-3">
-      <div class="col">
+      <div class=" bg-dark col overflow-auto">
         <div class="bg-dark border-right p-3" id="sidebar">
           <h3 class="text-light text-center">Formulario</h3>
           <hr class="text-light" />
@@ -38,7 +38,7 @@
                 <label for="inputEmail4" class="form-label">Concepto</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="input"
                   id="inputEmail4"
                   placeholder="Bancos"
                   style="color: white"
@@ -49,10 +49,10 @@
                 <label for="inputAddress" class="form-label">Codigo</label>
                 <input
                   type="number"
-                  class="form-control"
+                  class="input"
                   id="inputAddress"
                   placeholder="0"
-                  style="color: #2f2f2f"
+                  style="color: white"
                   #txtCodigo
                 />
               </div>
@@ -61,7 +61,7 @@
                 <label for="inputAddress" class="form-label">Descripcion</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="input"
                   id="inputAddress"
                   placeholder="Recibi de X, Tanto Y "
                   style="color: white"
@@ -72,7 +72,7 @@
                 <label for="saldo" class="form-label">Saldo</label>
                 <input
                   type="text"
-                  class="form-control"
+                  class="input"
                   id="saldo"
                   style="color: white"
                   placeholder="Creditio o Debito"
@@ -82,10 +82,10 @@
               <div class="col-md-4">
                 <label for="inputCity" class="form-label">Precio COP</label>
                 <input
-                  type="float"
-                  class="form-control"
+                  type="number"
+                  class="input"
                   id="inputCity"
-                  style="color: #2f2f2f"
+                  style="color: white;"
                   #txtPrecio
                 />
               </div>
@@ -104,7 +104,7 @@
               <div class="col-md-6">
               <input
                   type="text"
-                  class="form-control"
+                  class="input"
                   style="color: white; size: 120px;"
                   placeholder="Creditio o Debito"
                   #txtSaldoUpdate
@@ -113,7 +113,7 @@
               <div class="col-md-6">
                 <input
                   type="text"
-                  class="form-control"
+                  class="input"
                   style="color: white; size: 120px;"
                   placeholder="Precio en COP"
                   #txtPrecioUpdate
@@ -125,10 +125,10 @@
                     <label for="inputAddress" class="form-label">ID</label>
                     <input
                       type="number"
-                      class="form-control"
+                      class="input"
                       id="inputAddress"
                       placeholder="0"
-                      style="color: #2f2f2f"
+                      style="color: white"
                       #txtCodigoManipulable
                     />
                   </div>
@@ -137,15 +137,15 @@
                       <button
                         type="submit"
                         class="btn btn-warning btn-lg"
-                        style="width: 120px"
+                        style="width: 120px; margin-right: 90px;;"
                         (click)="updateBook()">
                         Actualizar
                       </button>
 
                       <button
                         type="submit"
-                        class="btn btn-danger btn-lg float-right"
-                        style="width: 100px"
+                        class="btn btn-danger btn-lg"
+                        style="width: 100px; margin-right: 40px;"
                         (click)="deleteBook()"
                       >
                         Eliminar
@@ -192,7 +192,7 @@
               </tr>
             </tbody>
           </table>
-          <button class="btn btn-danger"
+          <button class="btn btn-outline-dark " style="margin-left: 210px; margin-bottom: 20px;"
           (click)="onDoubleCouting()"> Partidas Dobles </button>
           <div class="container"
           *ngFor="let value of doblecouting; let indice = index; ">

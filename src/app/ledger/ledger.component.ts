@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { LedgerService } from './services/ledger.service';
 import { LoginService } from '../login/services/login.service';
-import { Welcome, Ledger } from '../login/interface/login.interface';
+import {  Ledger } from '../login/interface/login.interface';
 
 
 @Component({
@@ -9,8 +8,6 @@ import { Welcome, Ledger } from '../login/interface/login.interface';
   templateUrl: './ledger.component.html',
   styles: [
     `
-
-
     thead tr th {
       position: sticky;
       top: 0;

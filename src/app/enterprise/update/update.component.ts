@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Welcome } from '../../login/interface/login.interface';
-import { HomeService } from '../../home/services/home.service';
-import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { DirectiveNormalizer } from '@angular/compiler';
 import { LoginService } from '../../login/services/login.service';
 
 @Component({
