@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class HomeService {
 
 
-  private _url: string = '//localhost:8080/';
+  private _url: string = 'https://mfb-api.herokuapp.com/';
 
   id_enterprise: string = '';
 

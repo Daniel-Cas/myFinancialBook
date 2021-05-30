@@ -9,7 +9,7 @@ import { Observable, ObservedValueOf } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  private _url: string = '//localhost:8080/';
+  private _url: string = 'https://mfb-api.herokuapp.com/';
 
   Enterprise!: Welcome;
   ListJournal!: ListaJournal[] ;

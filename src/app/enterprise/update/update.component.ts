@@ -15,7 +15,7 @@ import { LoginService } from '../../login/services/login.service';
 })
 export class UpdateComponent {
 
-  private _url: string = '//localhost:8080/'
+  private _url: string = 'https://mfb-api.herokuapp.com/'
   Enterprise!: Welcome;
 
   @ViewChild('txtEmpresa')txtEmpresa!:ElementRef<HTMLInputElement>;

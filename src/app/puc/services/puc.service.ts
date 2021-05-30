@@ -7,7 +7,7 @@ import { Puc, Naturaleza } from '../interfaces/puc.interface';
 })
 export class PucService {
 
-  private _url: string = '//localhost:8080/'
+  private _url: string = 'https://mfb-api.herokuapp.com/'
 
   puc: Puc[] = [{
     cod_contable: 0,

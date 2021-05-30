@@ -8,7 +8,7 @@ import { Ledger } from '../interfaces/ledger.interfaces';
 })
 export class LedgerService {
 
-  private _url:          string  = '//localhost:8080/';
+  private _url:          string  = 'https://mfb-api.herokuapp.com/';
   private id_enterprise: string  = '';
   ledger: Ledger = {
     balance: false,
